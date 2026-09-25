@@ -140,6 +140,7 @@ export const universe = {
       text: "Un style spontané qui inspire confiance et attire toujours plus de clients.",
     },
   ],
+  valuesTitle: "Mes valeurs",
   skillsTitle: "Domaines de compétences",
   skills: [
     {
@@ -202,7 +203,17 @@ export const videos = {
 export const brands = {
   eyebrow: "Références",
   title: "Elles m'ont fait confiance",
-  items: [] as { name: string; logo: string }[],
+  // Logos : WebP transparent dans public/images/marques/ (affichés en blanc
+  // monochrome sur la section sombre). width / height = dimensions du fichier.
+  items: [
+    { name: "Byoma", logo: "/images/marques/byoma.webp", width: 549, height: 112 },
+    { name: "L'Oréal Paris", logo: "/images/marques/loreal-paris.webp", width: 560, height: 150 },
+    { name: "Maybelline New York", logo: "/images/marques/maybelline-new-york.webp", width: 560, height: 87 },
+    { name: "Mixa", logo: "/images/marques/mixa.webp", width: 445, height: 200 },
+    { name: "My Lubie", logo: "/images/marques/my-lubie.webp", width: 560, height: 121 },
+    { name: "NYX Professional Makeup", logo: "/images/marques/nyx.webp", width: 560, height: 154 },
+  ] as { name: string; logo: string; width: number; height: number }[],
+  // Utilisés seulement si `items` est vide
   placeholderCount: 6,
   placeholderLabel: "[À COMPLÉTER : logo marque]",
 };

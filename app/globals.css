@@ -383,7 +383,7 @@ section { position: relative; padding: clamp(4rem, 9vw, 7.5rem) var(--gutter); }
 .bio-text .bio-signature { margin-top: 1.8rem; font-family: var(--font-display), serif; font-style: italic; font-size: 1.7rem; color: var(--pink); }
 
 /* ---------- Univers : deux sliders (façon de travailler, compétences) ---------- */
-.slider { --per-view: 3; --gap: clamp(1.25rem, 3vw, 2.5rem); }
+.slider { --gap: 1rem; }
 .slider + .slider { margin-top: clamp(3.5rem, 8vw, 5.5rem); }
 .slider-bar {
   display: flex;
@@ -435,19 +435,8 @@ section { position: relative; padding: clamp(4rem, 9vw, 7.5rem) var(--gutter); }
 .slider-track::-webkit-scrollbar { display: none; }
 .slider-track:focus-visible { outline: 2px solid var(--pink); outline-offset: 6px; }
 
-.panel {
-  flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
-  scroll-snap-align: start;
-  padding-top: 1.4rem;
-  border-top: 1px solid var(--line-strong);
-}
-.panel-num { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.2em; color: var(--pink); }
-.panel-title { margin: 0.9rem 0 0.7rem; font-size: 1.75rem; font-weight: 600; line-height: 1.15; color: var(--ink); }
-.panel-title.italic { font-style: italic; font-size: 1.9rem; }
-.panel-text { margin: 0; color: var(--ink-soft); line-height: 1.7; font-size: 0.98rem; }
-.skills .panel-text { color: var(--muted); }
-
-.skills-title {
+/* Petit titre commun aux deux blocs (« Mes valeurs », « Domaines de compétences ») */
+.block-label {
   margin: 0;
   font-size: 0.74rem;
   font-weight: 700;
@@ -456,12 +445,69 @@ section { position: relative; padding: clamp(4rem, 9vw, 7.5rem) var(--gutter); }
   color: var(--pink);
 }
 
-@media (max-width: 980px) {
-  .slider { --per-view: 2; }
+/* --- Valeurs : éditorial, serif italique rose, filets verticaux --- */
+.values { margin-bottom: clamp(4rem, 9vw, 6rem); }
+.values .block-label { margin-bottom: 1.6rem; }
+.values-list { display: grid; grid-template-columns: repeat(3, 1fr); }
+.value { padding: 0.4rem clamp(1.25rem, 3vw, 2.5rem); border-left: 1px solid var(--line); }
+.value:first-child { padding-left: 0; border-left: 0; }
+.value-title {
+  margin: 0 0 0.8rem;
+  font-size: clamp(2rem, 3.4vw, 2.6rem);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--pink);
 }
+.value-text { margin: 0; color: var(--ink-soft); line-height: 1.7; font-size: 1rem; max-width: 22rem; }
+
+/* --- Compétences : grille de cases encadrées, sans-serif --- */
+.skill-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.6rem 1.5rem 1.8rem;
+  background: rgba(251, 243, 238, 0.035);
+  border: 1px solid var(--line);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.skill-cell:hover { background: rgba(255, 79, 163, 0.08); border-color: rgba(255, 79, 163, 0.5); }
+.skill-num { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; color: var(--muted); }
+.skill-label {
+  margin: 0.2rem 0 0;
+  font-size: 0.86rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.skill-text { margin: 0; font-size: 0.94rem; line-height: 1.65; color: var(--muted); }
+
+/* Desktop / tablette : le slider devient une grille fixe (pas de défilement,
+   les boutons se masquent d'eux-mêmes car rien ne dépasse). Les cases partagent
+   leurs bordures. */
+@media (min-width: 641px) {
+  .slider.mobile-only .slider-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    overflow: visible;
+  }
+  .slider.mobile-only .skill-cell { margin: 0 -1px -1px 0; }
+}
+@media (min-width: 641px) and (max-width: 980px) {
+  .slider.mobile-only .slider-track { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 640px) {
-  /* 1 élément + l'amorce du suivant, pour signaler qu'on peut faire glisser */
-  .slider { --per-view: 1.18; --gap: 1.25rem; }
+  /* Valeurs empilées, compactes, repère rose à gauche */
+  .values-list { grid-template-columns: 1fr; gap: 1.4rem; }
+  .value, .value:first-child { padding: 0.1rem 0 0.1rem 1rem; border-left: 2px solid var(--pink); }
+  .value-title { font-size: 1.7rem; margin-bottom: 0.4rem; }
+  .value-text { font-size: 0.95rem; }
+  /* Slider de compétences : 1 case + l'amorce de la suivante */
+  .skill-cell { flex: 0 0 82%; scroll-snap-align: start; }
 }
 
 /* ---------- Vidéos ---------- */
@@ -551,14 +597,28 @@ section { position: relative; padding: clamp(4rem, 9vw, 7.5rem) var(--gutter); }
   border-left: 1px solid var(--line);
 }
 .brand-item {
-  position: relative;
-  height: 7rem;
-  padding: 1.4rem;
+  display: grid;
+  place-items: center;
+  height: 8rem;
+  padding: 1.6rem 1.4rem;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
-.brand-item img { filter: grayscale(1) opacity(0.7); transition: filter 0.2s ease; }
-.brand-item:hover img { filter: none; }
+/* Logos en blanc monochrome : lisibles sur fond sombre et homogènes, quelles
+   que soient leurs couleurs d'origine. */
+.brand-item img {
+  width: auto;
+  height: auto;
+  max-width: min(88%, 180px);
+  max-height: 3rem;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.72;
+  transition: opacity 0.2s ease;
+}
+.brand-item:hover img { opacity: 1; }
+/* Sur une section claire, même principe en noir */
+.theme-light .brand-item img { filter: brightness(0); opacity: 0.7; }
 .brand-placeholder {
   display: grid; place-items: center;
   text-align: center;
@@ -568,6 +628,7 @@ section { position: relative; padding: clamp(4rem, 9vw, 7.5rem) var(--gutter); }
 }
 @media (max-width: 560px) {
   .brands-grid { grid-template-columns: repeat(2, 1fr); }
+  .brand-item { height: 6.5rem; }
 }
 
 /* ---------- Projet YouTube (vidéo paysage 16:9, sans recadrage) ---------- */

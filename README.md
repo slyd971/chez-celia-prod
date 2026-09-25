@@ -73,7 +73,7 @@ npm run build     # génère le dossier out/
 
 Le dossier **`out/`** est un site 100 % statique : il suffit de l'envoyer sur
 l'hébergement presskit.fr. Si le domaine final n'est pas
-`https://chez-celia-prod.presskit.fr`, définir `NEXT_PUBLIC_SITE_URL` (voir
+`https://chezceliaprod.presskit.fr`, définir `NEXT_PUBLIC_SITE_URL` (voir
 `.env.local.example`) avant le build.
 
 ## Détails techniques

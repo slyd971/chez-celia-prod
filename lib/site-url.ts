@@ -2,4 +2,4 @@
 // robots.txt et l'image de partage Open Graph. Surchargeable via la variable
 // d'environnement NEXT_PUBLIC_SITE_URL (voir .env.local.example).
 export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://chez-celia-prod.presskit.fr";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://chezceliaprod.presskit.fr";

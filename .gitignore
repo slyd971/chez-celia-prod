@@ -17,3 +17,6 @@ npm-debug.log*
 
 # Cache TypeScript
 *.tsbuildinfo
+
+# Dossier de logos d origine déposé dans public/ (copie dans source-media/logos)
+/public/Logos-PNG-Transparents/

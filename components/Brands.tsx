@@ -17,7 +17,7 @@ export function Brands() {
           {hasLogos
             ? brands.items.map((item) => (
                 <li className="brand-item" key={item.name} data-reveal>
-                  <Image src={item.logo} alt={item.name} fill sizes="(max-width: 560px) 40vw, 160px" style={{ objectFit: "contain" }} />
+                  <Image src={item.logo} alt={item.name} width={item.width} height={item.height} loading="lazy" />
                 </li>
               ))
             : Array.from({ length: brands.placeholderCount }, (_, i) => (

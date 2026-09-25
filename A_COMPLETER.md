@@ -8,7 +8,6 @@ visibles sur le site commencent par `[À COMPLÉTER`.
 | Où | Champ dans `content/celia.ts` | Ce qu'il faut |
 |---|---|---|
 | Projet YouTube | `youtube.cta.href` | Lien de la chaîne ou de la vidéo YouTube. Tant qu'il manque, le bouton « Voir sur YouTube » est affiché désactivé. |
-| Marques | `brands.items` | Logos des marques (6 emplacements vides affichés pour l'instant). Déposer les logos (PNG fond transparent) dans `public/images/marques/` puis ajouter `{ name: "Mixa", logo: "/images/marques/mixa.png" }`. |
 
 ## 2. Médias à fournir par Célia
 
@@ -18,7 +17,7 @@ visibles sur le site commencent par `[À COMPLÉTER`.
 - **Vidéo hero en paysage** (optionnel, recommandé) : la vidéo actuelle est en
   portrait (720×1280). En plein écran sur desktop, elle est fortement recadrée et
   agrandie, donc un peu floue. Une version 16:9 (1920×1080) rendrait mieux.
-- **Logos des marques** (voir ci-dessus).
+- **Logos supplémentaires** (optionnel) : 6 logos intégrés (Byoma, L'Oréal Paris, Maybelline, Mixa, My Lubie, NYX). Pour en ajouter : PNG transparent → `public/images/marques/` + une ligne dans `brands.items`.
 
 ## 3. Chiffres et liens à valider
 
@@ -28,7 +27,7 @@ visibles sur le site commencent par `[À COMPLÉTER`.
   à remplacer par des chiffres plus récents.
 - **Légendes des vidéos** : « Célia pour Afroboat / Afrogroovers / La Mif' »
   (déduites des noms de fichiers). À valider.
-- ~~Domaine~~ : confirmé, `https://chez-celia-prod.presskit.fr` (`lib/site-url.ts`).
+- ~~Domaine~~ : confirmé, `https://chezceliaprod.presskit.fr` (`lib/site-url.ts`).
 - ~~Email~~ : confirmé, `contact@chezceliaprod.fr`.
 - ~~Nom~~ : confirmé, « Chez Célia Prod » (le lien Instagram reste `@celia.sans.filtre`).
 
