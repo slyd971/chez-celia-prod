@@ -1,0 +1,19 @@
+/node_modules
+/.next/
+/out/
+.env.local
+.DS_Store
+*.pem
+npm-debug.log*
+~$*.docx
+
+.vercel
+.env*
+
+# Médias bruts fournis (non publiés : les versions web sont dans public/)
+/source-media/
+# Le modèle de variables d'environnement, lui, est versionné
+!.env.local.example
+
+# Cache TypeScript
+*.tsbuildinfo
