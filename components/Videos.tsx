@@ -17,6 +17,8 @@ function VideoCard({
 }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
+  const [playing, setPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [canHover, setCanHover] = useState(false);
 
   useEffect(() => {
@@ -35,12 +37,23 @@ function VideoCard({
     ref.current?.play().catch(() => {});
   };
 
+  // Clic n'importe où sur la vidéo : lecture / pause. Pendant l'aperçu au
+  // survol (carte pas encore activée), le clic lance la vraie lecture.
+  const toggle = () => {
+    const video = ref.current;
+    if (!video) return;
+    if (!active || video.paused) play();
+    else video.pause();
+  };
+
   const toggleSound = () => {
     const video = ref.current;
     if (!video) return;
     video.muted = !video.muted;
     if (video.paused) play();
   };
+
+  const showPlayIcon = !playing || !active;
 
   return (
     <figure
@@ -65,17 +78,26 @@ function VideoCard({
           loop
           playsInline
           preload="none"
-          controls={active}
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+          onTimeUpdate={(e) => {
+            const v = e.currentTarget;
+            if (v.duration) setProgress(v.currentTime / v.duration);
+          }}
           onVolumeChange={(e) => setMuted(e.currentTarget.muted)}
-          aria-label={`Vidéo : ${item.caption}`}
+          aria-hidden="true"
         />
-        {!active && (
-          <button type="button" className="vcard-play" onClick={play} aria-label={`Lire la vidéo : ${item.caption}`}>
-            <span>
-              <PlayIcon />
-            </span>
-          </button>
-        )}
+        {/* Zone cliquable sur toute la vidéo (lecture / pause) */}
+        <button
+          type="button"
+          className={`vcard-toggle${showPlayIcon ? "" : " is-playing"}`}
+          onClick={toggle}
+          aria-label={`${active && playing ? "Mettre en pause" : "Lire"} la vidéo : ${item.caption}`}
+        >
+          <span aria-hidden="true">
+            <PlayIcon />
+          </span>
+        </button>
         <button
           type="button"
           className="vcard-sound"
@@ -85,6 +107,11 @@ function VideoCard({
         >
           {muted ? <SoundOffIcon /> : <SoundOnIcon />}
         </button>
+        {active && (
+          <span className="vcard-progress" aria-hidden="true">
+            <span style={{ transform: `scaleX(${progress})` }} />
+          </span>
+        )}
       </div>
       <figcaption>{item.caption}</figcaption>
     </figure>
