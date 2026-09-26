@@ -1,7 +1,7 @@
-import { bio, brand, contact, contactInfo, seo, universe } from "@/content/celia";
+import { bio, brand, contact, contactInfo, seo, universe, youtube } from "@/content/celia";
 import { siteUrl } from "@/lib/site-url";
 
-// Données structurées schema.org : Célia (Person) derrière la marque
+// Données structurées schema.org : Célia (Person), qui travaille pour
 // Chez Célia Prod (Organization), présentées par une ProfilePage.
 export function StructuredData() {
   const url = `${siteUrl}/`;
@@ -12,6 +12,8 @@ export function StructuredData() {
     org: `${url}#organization`,
   };
   const telephone = contactInfo.phoneHref.replace("tel:", "");
+  // Profils officiels ; YouTube seulement une fois le lien renseigné
+  const sameAs = [contactInfo.instagram.url, contactInfo.tiktok.url, youtube.cta.href].filter(Boolean);
 
   const data = {
     "@context": "https://schema.org",
@@ -42,15 +44,16 @@ export function StructuredData() {
         name: seo.person.name,
         givenName: seo.person.givenName,
         alternateName: brand.handle,
-        jobTitle: brand.signature.slice(0, 2).join(" · "),
+        url,
+        jobTitle: seo.person.jobTitle,
         description: bio.paragraphs[0],
         image: [`${siteUrl}${bio.photo.src}`, `${siteUrl}${contact.photo.src}`],
-        email: `mailto:${contactInfo.email}`,
+        email: contactInfo.email,
         telephone,
         knowsAbout: universe.skills.map((skill) => skill.label),
         knowsLanguage: "fr",
-        worksFor: { "@id": ids.org },
-        sameAs: [contactInfo.instagram.url],
+        worksFor: { "@type": "Organization", "@id": ids.org, name: brand.name },
+        sameAs,
       },
       {
         "@type": "Organization",
@@ -62,7 +65,7 @@ export function StructuredData() {
         email: contactInfo.email,
         telephone,
         founder: { "@id": ids.person },
-        sameAs: [contactInfo.instagram.url],
+        sameAs,
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "Collaborations et presse",

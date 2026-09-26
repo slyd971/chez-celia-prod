@@ -40,8 +40,17 @@ export function Contact() {
             <div>
               <dt>Instagram</dt>
               <dd>
-                <a href={contactInfo.instagram.url} target="_blank" rel="noopener">
+                <a href={contactInfo.instagram.url} target="_blank" rel="noopener noreferrer">
                   {contactInfo.instagram.label}
+                  <span className="sr-only"> (nouvel onglet)</span>
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt>TikTok</dt>
+              <dd>
+                <a href={contactInfo.tiktok.url} target="_blank" rel="noopener noreferrer">
+                  {contactInfo.tiktok.label}
                   <span className="sr-only"> (nouvel onglet)</span>
                 </a>
               </dd>
@@ -52,7 +61,7 @@ export function Contact() {
             <a className="btn btn-primary" href={`mailto:${contactInfo.email}`}>
               {contact.cta}
             </a>
-            <a className="btn btn-ghost" href={contactInfo.whatsapp.url} target="_blank" rel="noopener">
+            <a className="btn btn-whatsapp" href={contactInfo.whatsapp.url} target="_blank" rel="noopener noreferrer">
               {contactInfo.whatsapp.label}
               <span className="sr-only"> (nouvel onglet)</span>
             </a>

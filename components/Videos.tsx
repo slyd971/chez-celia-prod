@@ -77,7 +77,7 @@ function VideoCard({
           muted
           loop
           playsInline
-          preload="none"
+          preload="metadata"
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
           onTimeUpdate={(e) => {
@@ -139,7 +139,7 @@ export function Videos() {
         </div>
 
         <div className="videos-cta" data-reveal>
-          <a className="btn btn-primary" href={videos.cta.href} target="_blank" rel="noopener">
+          <a className="btn btn-primary" href={videos.cta.href} target="_blank" rel="noopener noreferrer">
             {videos.cta.label}
             <span className="sr-only"> (nouvel onglet)</span>
           </a>

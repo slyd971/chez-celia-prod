@@ -80,6 +80,7 @@ export function Hero() {
       <video
         ref={videoRef}
         className="hero-video"
+        poster={hero.poster}
         data-playing={playing ? "true" : "false"}
         muted
         loop

@@ -14,17 +14,16 @@ npm run dev        # http://localhost:3000
 ## Modifier le contenu
 
 **Tout est dans [`content/celia.ts`](content/celia.ts)** : textes, KPIs,
-compétences, vidéos, projet YouTube, marques, contact, navigation. Aucun besoin
+compétences, vidéos, projet YouTube, contact, navigation. Aucun besoin
 de toucher aux composants.
 
 - **KPIs** : `{ value, decimals, suffix, label }` pour un compteur animé, ou
   `{ display, label }` pour un texte fixe. `\n` dans `label` = retour à la ligne.
 - **Vidéos** : ajouter ou retirer des items dans `videos.items`. La grille
   s'adapte (3 ou 4 colonnes).
-- **Marques** : remplir `brands.items`. Tant que la liste est vide, des
-  emplacements placeholder sont affichés.
-- **YouTube** : tant que `youtube.cta.href` commence par `[À COMPLÉTER`, le
-  bouton est affiché désactivé.
+- **YouTube** : tant que `youtube.cta.href` est vide, le bouton est masqué.
+- **Garde-fou** : après `npm run build`, `scripts/check-placeholders.mjs` fait
+  échouer le build si « À COMPLÉTER », « TODO » ou « lorem » est dans le HTML.
 
 Ce qui reste à fournir est listé dans [`A_COMPLETER.md`](A_COMPLETER.md).
 
@@ -57,7 +56,7 @@ app/
 components/
   Header (nav sticky + burger), Hero (vidéo plein écran), Stats (compteurs),
   Bio, Universe (concept + compétences), Videos (3-4 vidéos 9:16),
-  Brands (logos / placeholders), YoutubeProject (vidéo 16:9), Contact, Footer,
+  YoutubeProject (vidéo 16:9), Contact, Footer,
   Glitter (paillettes canvas), RevealOnScroll (apparitions), icons
 content/celia.ts        ← contenu éditable
 lib/site-url.ts         domaine de production

@@ -2,11 +2,9 @@
 // des photos / vidéos, liens et contact. Modifiez ce fichier pour mettre à
 // jour le site sans toucher aux composants React (dossier components/).
 //
-// ⚠️ Les valeurs qui commencent par "[À COMPLÉTER" sont des placeholders :
-// elles sont listées dans A_COMPLETER.md à la racine du projet.
-
-export const TODO_PREFIX = "[À COMPLÉTER";
-export const isTodo = (value: string) => value.startsWith(TODO_PREFIX);
+// ⚠️ Les valeurs manquantes sont laissées vides (ou null) et signalées par un
+// commentaire « À COMPLÉTER » : l'élément correspondant est alors masqué.
+// Elles sont listées dans A_COMPLETER.md à la racine du projet.
 
 export const brand = {
   name: "Chez Célia Prod",
@@ -51,6 +49,7 @@ export const seo = {
   person: {
     givenName: "Célia",
     name: "Célia",
+    jobTitle: "Créatrice UGC & consultante en stratégie digitale",
   },
 };
 
@@ -73,6 +72,10 @@ export const contactInfo = {
     url: "https://www.instagram.com/celia.sans.filtre/",
     label: "@celia.sans.filtre",
   },
+  tiktok: {
+    url: "https://www.tiktok.com/@celia.sans.filtre",
+    label: "@celia.sans.filtre",
+  },
 };
 
 export const hero = {
@@ -93,11 +96,17 @@ export type Stat =
   | { value: number; decimals?: number; prefix?: string; suffix?: string; label: string }
   | { display: string; label: string };
 
+// À COMPLÉTER PAR DAVID : KPI qui remplace « 1,15 M vues sur un seul Reel »
+// (ex. nombre de collaborations ou de contenus livrés). Exemple :
+//   { value: 40, suffix: "+", label: "Contenus\nlivrés" }
+// Tant que la valeur est null, l'ancien KPI reste affiché.
+const secondKpi: Stat | null = null;
+
 export const stats: Stat[] = [
   // Source : captures « Quelques résultats » de chezceliaprod.fr/portfolio
   // (1 150 498 + 495 665 + 105 K + 64 K vues)
   { value: 1.8, decimals: 1, suffix: " M+", label: "Vues cumulées\nsur 4 Reels" },
-  { value: 1.15, decimals: 2, suffix: " M", label: "Vues sur\nun seul Reel" },
+  secondKpi ?? { value: 1.15, decimals: 2, suffix: " M", label: "Vues sur\nun seul Reel" },
   // 18 K + 7,1 K + 3,1 K + 1,2 K
   { value: 29, suffix: " K+", label: "J'aime cumulés\nsur ces 4 Reels" },
   // Communiqué par Célia (sept. 2026)
@@ -197,42 +206,23 @@ export const videos = {
   },
 };
 
-// Logos des marques : à ajouter plus tard. Tant que `items` est vide,
-// `placeholderCount` emplacements vides sont affichés.
-// Exemple d'item : { name: "Mixa", logo: "/images/marques/mixa.png" }
-export const brands = {
-  eyebrow: "Références",
-  title: "Elles m'ont fait confiance",
-  // Logos : WebP transparent dans public/images/marques/ (affichés en blanc
-  // monochrome sur la section sombre). width / height = dimensions du fichier.
-  items: [
-    { name: "Byoma", logo: "/images/marques/byoma.webp", width: 549, height: 112 },
-    { name: "L'Oréal Paris", logo: "/images/marques/loreal-paris.webp", width: 560, height: 150 },
-    { name: "Maybelline New York", logo: "/images/marques/maybelline-new-york.webp", width: 560, height: 87 },
-    { name: "Mixa", logo: "/images/marques/mixa.webp", width: 445, height: 200 },
-    { name: "My Lubie", logo: "/images/marques/my-lubie.webp", width: 560, height: 121 },
-    { name: "NYX Professional Makeup", logo: "/images/marques/nyx.webp", width: 560, height: 154 },
-  ] as { name: string; logo: string; width: number; height: number }[],
-  // Utilisés seulement si `items` est vide
-  placeholderCount: 6,
-  placeholderLabel: "[À COMPLÉTER : logo marque]",
-};
-
 // La vidéo est en paysage (16:9) : elle est affichée dans son ratio d'origine,
 // sans recadrage.
 export const youtube = {
   eyebrow: "Projet YouTube",
-  // Texte fourni par Célia (25/09/2026)
+  // Texte fourni par Célia (25/09/2026), sans mention de l'âge
   title: "Beauty Maxing",
   description:
-    "Beauty Maxing est une série digitale dans laquelle Célia documente pendant six mois sa transformation à 35 ans. Bien au-delà d'un simple glow up, elle part à la découverte de ce qui lui correspond réellement : beauté, style, coiffure, sport, bien-être, confiance en soi et nouvelles expériences. Accompagnée de professionnels, d'experts et de marques, elle teste, apprend et partage son évolution sans filtre sur YouTube, TikTok et Instagram, jusqu'à son bilan final en mars 2027.",
+    "Beauty Maxing est une série digitale dans laquelle Célia documente pendant six mois sa transformation. Bien au-delà d'un simple glow up, elle part à la découverte de ce qui lui correspond réellement : beauté, style, coiffure, sport, bien-être, confiance en soi et nouvelles expériences. Accompagnée de professionnels, d'experts et de marques, elle teste, apprend et partage son évolution sans filtre sur YouTube, TikTok et Instagram, jusqu'à son bilan final en mars 2027.",
   video: "/videos/video-projet-youtube.mp4",
   poster: "/images/poster-projet-youtube.webp",
   width: 848,
   height: 480,
   cta: {
     label: "Voir sur YouTube",
-    href: "[À COMPLÉTER : lien de la chaîne ou de la vidéo YouTube]",
+    // À COMPLÉTER PAR DAVID : URL de la série Beauty Maxing. Tant que la
+    // valeur est vide, le bouton n'est pas affiché.
+    href: "",
   },
 };
 

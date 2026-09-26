@@ -1,7 +1,8 @@
-import { isTodo, youtube } from "@/content/celia";
+import { youtube } from "@/content/celia";
 
 export function YoutubeProject() {
-  const linkReady = !isTodo(youtube.cta.href);
+  // Pas de lien renseigné : le bouton est masqué (jamais de texte placeholder).
+  const linkReady = youtube.cta.href.trim() !== "";
 
   return (
     <section className="youtube theme-light bg-ivory" id="youtube">
@@ -27,18 +28,11 @@ export function YoutubeProject() {
             {youtube.title}
           </h2>
           <p>{youtube.description}</p>
-          {linkReady ? (
-            <a className="btn btn-primary" href={youtube.cta.href} target="_blank" rel="noopener">
+          {linkReady && (
+            <a className="btn btn-primary" href={youtube.cta.href} target="_blank" rel="noopener noreferrer">
               {youtube.cta.label}
               <span className="sr-only"> (nouvel onglet)</span>
             </a>
-          ) : (
-            <>
-              <span className="btn btn-primary is-disabled" aria-disabled="true">
-                {youtube.cta.label}
-              </span>
-              <p className="todo-note">{youtube.cta.href}</p>
-            </>
           )}
         </div>
       </div>

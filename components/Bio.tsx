@@ -3,7 +3,7 @@ import { bio } from "@/content/celia";
 
 export function Bio() {
   return (
-    <section className="bio theme-light bg-cream" id="bio">
+    <section className="bio theme-light bg-cream" id="bio" aria-labelledby="bio-heading">
       <div className="wrap bio-grid">
         <div className="photo-frame" data-reveal>
           <Image
@@ -15,10 +15,10 @@ export function Bio() {
           />
         </div>
         <div className="bio-text" data-reveal>
-          <span className="eyebrow">{bio.eyebrow}</span>
-          <h2 className="display section-title">
-            {bio.title}
-          </h2>
+          {/* Le titre de section est « Qui suis-je ? » ; la punchline reste un
+              paragraphe mis en forme comme un titre (un seul h1 sur la page). */}
+          <h2 id="bio-heading" className="eyebrow">{bio.eyebrow}</h2>
+          <p className="display section-title bio-punchline">{bio.title}</p>
           {bio.paragraphs.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}

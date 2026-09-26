@@ -93,12 +93,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Active les animations d'apparition seulement si JS est disponible */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <StructuredData />
       </head>
       <body>
         <a href="#main-content" className="skip-link">
           Passer au contenu
         </a>
-        <StructuredData />
         {children}
       </body>
     </html>

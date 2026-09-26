@@ -18,9 +18,13 @@ export function Footer() {
         </nav>
 
         <div className="footer-social">
-          <a href={contactInfo.instagram.url} target="_blank" rel="noopener">
-            {contactInfo.instagram.label}
-            <span className="sr-only"> sur Instagram (nouvel onglet)</span>
+          <a href={contactInfo.instagram.url} target="_blank" rel="noopener noreferrer">
+            Instagram
+            <span className="sr-only"> {contactInfo.instagram.label} (nouvel onglet)</span>
+          </a>
+          <a href={contactInfo.tiktok.url} target="_blank" rel="noopener noreferrer">
+            TikTok
+            <span className="sr-only"> {contactInfo.tiktok.label} (nouvel onglet)</span>
           </a>
           <a href={`mailto:${contactInfo.email}`}>
             {contactInfo.email}
@@ -33,7 +37,7 @@ export function Footer() {
           © {new Date().getFullYear()} {brand.name}
         </p>
         <p>
-          <a href={footer.credit.href} target="_blank" rel="noopener">
+          <a href={footer.credit.href} target="_blank" rel="noopener noreferrer">
             {footer.credit.label}
           </a>
         </p>

@@ -4,7 +4,6 @@ import { Stats } from "@/components/Stats";
 import { Bio } from "@/components/Bio";
 import { Universe } from "@/components/Universe";
 import { Videos } from "@/components/Videos";
-import { Brands } from "@/components/Brands";
 import { YoutubeProject } from "@/components/YoutubeProject";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
@@ -21,7 +20,6 @@ export default function Home() {
         <Bio />
         <Universe />
         <Videos />
-        <Brands />
         <YoutubeProject />
         <Contact />
       </main>
