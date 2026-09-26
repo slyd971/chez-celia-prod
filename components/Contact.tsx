@@ -61,7 +61,7 @@ export function Contact() {
             <a className="btn btn-primary" href={`mailto:${contactInfo.email}`}>
               {contact.cta}
             </a>
-            <a className="btn btn-whatsapp" href={contactInfo.whatsapp.url} target="_blank" rel="noopener noreferrer">
+            <a className="btn btn-ghost" href={contactInfo.whatsapp.url} target="_blank" rel="noopener noreferrer">
               {contactInfo.whatsapp.label}
               <span className="sr-only"> (nouvel onglet)</span>
             </a>

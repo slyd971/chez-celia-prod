@@ -171,9 +171,6 @@ section { position: relative; padding: clamp(4rem, 9vw, 7.5rem) var(--gutter); }
 .btn-primary:hover { background: transparent; color: var(--pink); }
 .btn-ghost { border-color: var(--line-strong); color: var(--ink); background: transparent; }
 .btn-ghost:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); }
-/* Vert WhatsApp officiel ; texte foncé car le blanc ne passe pas le contraste AA */
-.btn-whatsapp { background: #25d366; border-color: #25d366; color: #06281a; }
-.btn-whatsapp:hover { background: #1ebe5b; border-color: #1ebe5b; }
 
 /* ---------- Header ---------- */
 .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 60; }
