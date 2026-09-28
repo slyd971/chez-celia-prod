@@ -346,6 +346,48 @@ section { position: relative; padding: clamp(4rem, 9vw, 7.5rem) var(--gutter); }
 }
 .section-intro { margin: 0.3rem 0 0; font-size: 1.04rem; line-height: 1.75; color: var(--muted); }
 
+/* ---------- Bandeau réseaux sociaux (sous le hero) ---------- */
+.social-bar {
+  position: relative;
+  padding: 1.1rem var(--gutter);
+  background: var(--bg-deep);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.social-bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem 2.2rem;
+}
+.social-bar-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--pink);
+}
+.social-bar-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem 1.8rem; margin: 0; padding: 0; list-style: none; }
+.social-bar-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.86rem;
+  transition: color 0.15s ease;
+}
+.social-bar-list svg { width: 22px; height: 22px; flex: none; }
+.social-bar-list a:hover { color: var(--pink); }
+@media (max-width: 560px) {
+  .social-bar-inner { flex-direction: column; }
+  .social-bar-list { gap: 0.2rem 1.4rem; }
+  .social-bar-list a span:not(.sr-only) { font-size: 0.8rem; }
+}
+
 /* ---------- KPIs ---------- */
 .stats { padding-top: clamp(2.5rem, 5vw, 3.5rem); padding-bottom: clamp(3rem, 6vw, 4.5rem); }
 /* Chiffres « libres » : aucun filet, seulement l'espace entre eux */

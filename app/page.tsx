@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { SocialBar } from "@/components/SocialBar";
 import { Stats } from "@/components/Stats";
 import { Bio } from "@/components/Bio";
 import { Universe } from "@/components/Universe";
@@ -17,6 +18,7 @@ export default function Home() {
       <Header />
       <Hero />
       <main id="main-content">
+        <SocialBar />
         <Stats />
         <Bio />
         <Universe />

@@ -13,8 +13,7 @@ HTML généré (`out/`).
 
 | Où | Champ dans `content/celia.ts` | Ce qu'il faut | En attendant |
 |---|---|---|---|
-| Projet YouTube | `youtube.cta.href` | URL de la série Beauty Maxing | Bouton « Voir sur YouTube » masqué. L'URL est aussi ajoutée automatiquement au `sameAs` du JSON-LD. |
-| KPIs | `secondKpi` (au-dessus de `stats`) | KPI qui remplace « 1,15 M vues sur un seul Reel » (ex. nombre de collaborations ou de contenus livrés) | L'ancien KPI 1,15 M reste affiché. |
+| — | — | Rien pour le moment | — |
 
 ## 2. À valider
 
@@ -32,6 +31,8 @@ HTML généré (`out/`).
 ## 4. Décisions actées
 
 - Nom et H1 : « Chez Célia Prod » ; handle @celia.sans.filtre (Instagram, TikTok).
+- YouTube : https://www.youtube.com/@celia.sans.filtre (`youtube.cta.href`,
+  bouton « Voir sur YouTube » + `sameAs` du JSON-LD).
 - Domaine : `https://chezceliaprod.presskit.fr` (`lib/site-url.ts`) ; e-mail
   `contact@chezceliaprod.fr`.
 - 3 vidéos, pas de 4ᵉ.

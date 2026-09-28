@@ -96,17 +96,11 @@ export type Stat =
   | { value: number; decimals?: number; prefix?: string; suffix?: string; label: string }
   | { display: string; label: string };
 
-// À COMPLÉTER PAR DAVID : KPI qui remplace « 1,15 M vues sur un seul Reel »
-// (ex. nombre de collaborations ou de contenus livrés). Exemple :
-//   { value: 40, suffix: "+", label: "Contenus\nlivrés" }
-// Tant que la valeur est null, l'ancien KPI reste affiché.
-const secondKpi: Stat | null = null;
-
 export const stats: Stat[] = [
   // Source : captures « Quelques résultats » de chezceliaprod.fr/portfolio
   // (1 150 498 + 495 665 + 105 K + 64 K vues)
   { value: 1.8, decimals: 1, suffix: " M+", label: "Vues cumulées\nsur 4 Reels" },
-  secondKpi ?? { value: 1.15, decimals: 2, suffix: " M", label: "Vues sur\nun seul Reel" },
+  { value: 1.15, decimals: 2, suffix: " M", label: "Vues sur\nun seul Reel" },
   // 18 K + 7,1 K + 3,1 K + 1,2 K
   { value: 29, suffix: " K+", label: "J'aime cumulés\nsur ces 4 Reels" },
   // Communiqué par Célia (sept. 2026)
@@ -238,10 +232,19 @@ export const youtube = {
   height: 480,
   cta: {
     label: "Voir sur YouTube",
-    // À COMPLÉTER PAR DAVID : URL de la série Beauty Maxing. Tant que la
-    // valeur est vide, le bouton n'est pas affiché.
-    href: "",
+    // Chaîne YouTube de Célia (si vide, le bouton est masqué)
+    href: "https://www.youtube.com/@celia.sans.filtre",
   },
+};
+
+// Bandeau des réseaux sociaux, sous le hero
+export const socials = {
+  label: "Retrouvez-moi sur",
+  items: [
+    { network: "instagram", name: "Instagram", url: contactInfo.instagram.url },
+    { network: "tiktok", name: "TikTok", url: contactInfo.tiktok.url },
+    { network: "youtube", name: "YouTube", url: youtube.cta.href },
+  ] as const,
 };
 
 export const contact = {
