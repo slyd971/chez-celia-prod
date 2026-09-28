@@ -206,6 +206,24 @@ export const videos = {
   },
 };
 
+// Section « Elles m'ont fait confiance ». Si `items` est vide, la section est
+// masquée. Exemple d'item :
+//   { name: "Mixa", logo: "/images/marques/mixa.webp", width: 445, height: 200 }
+export const brands = {
+  eyebrow: "Références",
+  title: "Elles m'ont fait confiance",
+  // Logos : WebP transparent dans public/images/marques/ (affichés en blanc
+  // monochrome sur la section sombre). width / height = dimensions du fichier.
+  items: [
+    { name: "Byoma", logo: "/images/marques/byoma.webp", width: 549, height: 112 },
+    { name: "L'Oréal Paris", logo: "/images/marques/loreal-paris.webp", width: 560, height: 150 },
+    { name: "Maybelline New York", logo: "/images/marques/maybelline-new-york.webp", width: 560, height: 87 },
+    { name: "Mixa", logo: "/images/marques/mixa.webp", width: 445, height: 200 },
+    { name: "My Lubie", logo: "/images/marques/my-lubie.webp", width: 560, height: 121 },
+    { name: "NYX Professional Makeup", logo: "/images/marques/nyx.webp", width: 560, height: 154 },
+  ] as { name: string; logo: string; width: number; height: number }[],
+};
+
 // La vidéo est en paysage (16:9) : elle est affichée dans son ratio d'origine,
 // sans recadrage.
 export const youtube = {

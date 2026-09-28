@@ -35,7 +35,8 @@ HTML généré (`out/`).
 - Domaine : `https://chezceliaprod.presskit.fr` (`lib/site-url.ts`) ; e-mail
   `contact@chezceliaprod.fr`.
 - 3 vidéos, pas de 4ᵉ.
-- Pas de section logos de marques.
+- Section logos « Elles m'ont fait confiance » : Byoma, L'Oréal Paris,
+  Maybelline New York, Mixa, My Lubie, NYX (`brands.items`).
 - Pas de mention de l'âge (texte Beauty Maxing : « sa transformation »).
 - Vidéo du projet YouTube affichée en 16:9, sans recadrage.
 - **Community management** : exclu de toutes les sections, textes et meta.

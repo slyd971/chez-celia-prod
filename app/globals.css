@@ -620,6 +620,41 @@ section { position: relative; padding: clamp(4rem, 9vw, 7.5rem) var(--gutter); }
   .vcard { flex-basis: 78%; }
 }
 
+/* ---------- Marques : grille à filets ---------- */
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.brand-item {
+  display: grid;
+  place-items: center;
+  height: 8rem;
+  padding: 1.6rem 1.4rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+/* Logos en blanc monochrome : lisibles sur fond sombre et homogènes, quelles
+   que soient leurs couleurs d'origine. */
+.brand-item img {
+  width: auto;
+  height: auto;
+  max-width: min(88%, 180px);
+  max-height: 3rem;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.72;
+  transition: opacity 0.2s ease;
+}
+.brand-item:hover img { opacity: 1; }
+/* Sur une section claire, même principe en noir */
+.theme-light .brand-item img { filter: brightness(0); opacity: 0.7; }
+@media (max-width: 560px) {
+  .brands-grid { grid-template-columns: repeat(2, 1fr); }
+  .brand-item { height: 6.5rem; }
+}
+
 /* ---------- Projet YouTube (vidéo paysage 16:9, sans recadrage) ---------- */
 
 .youtube-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(2.5rem, 6vw, 4.5rem); align-items: center; }
